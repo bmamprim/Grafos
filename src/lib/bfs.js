@@ -1,4 +1,4 @@
-function bfs(grafo, inicio) {
+export function bfs(grafo, inicio) {
     var fila = [inicio];
     const visitados = new Set();
     const resultado = [];
@@ -7,7 +7,7 @@ function bfs(grafo, inicio) {
         const subgrafo = [];
 
         if(!(fila.length)) {
-            for(vertice in grafo) {
+            for(const vertice in grafo) {
                 if(!visitados.has(vertice)) {
                     fila = [vertice];
                     break;
