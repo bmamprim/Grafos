@@ -65,6 +65,11 @@ export function InputGrafo({direcionado}) {
                     <p>N: [{[...vertices].join(', ')}]</p>
                 </div>
             </div>
+
+            <div className='row'>
+                <label>Inicio</label>
+                <input placeholder='Inicio' className='input' value={inicio} onChange={(e) => setInicio(String(e.target.value))}/>
+            </div>
         
             <div className='row-bfs-dfs'>
                 <div className='col'>
