@@ -1,0 +1,24 @@
+.laco {
+    background-color: #B7E5FF;
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bolder;
+    z-index: 3000;
+}
+
+.laco-aresta {
+    border-radius: 50%;
+    border: 3px solid #E09FFF;
+    background-color: transparent;
+    width: 5rem;
+    height: 5rem;
+    position: relative;
+    margin-top: -2rem;
+    margin-left: 4rem;
+}
