@@ -1,4 +1,4 @@
-.circle {
+.circle1, .circle2 {
     background-color: #B7E5FF;
     border-radius: 50%;
     width: 6rem;
@@ -9,6 +9,7 @@
     justify-content: center;
     color: white;
     font-weight: bolder;
+
 }
 
 hr {

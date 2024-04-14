@@ -9,6 +9,7 @@
     justify-content: center;
     color: white;
     font-weight: bolder;
+    margin-top: 2rem;
     z-index: 3000;
 }
 
@@ -16,9 +17,9 @@
     border-radius: 50%;
     border: 3px solid #E09FFF;
     background-color: transparent;
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     position: relative;
-    margin-top: -2rem;
+    margin-top: -3rem;
     margin-left: 4rem;
 }

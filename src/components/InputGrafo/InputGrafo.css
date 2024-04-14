@@ -1,0 +1,70 @@
+.row, .row-input, .row-bfs-dfs {
+    display: flex;
+    flex-direction: row;
+}
+
+.row-input {
+    align-items: center;
+    gap: 1rem;
+
+}
+.row {
+    gap: 5rem;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.row-bfs-dfs {
+    gap: 6rem;
+}
+
+.btnLista, .btnBfs, .btnDfs {
+    padding: 0.7rem 2rem;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    width: 15rem;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.btnLista {
+background-color: #E09FFF;
+}
+
+.btnBfs, .btnDfs {
+    background-color: #0085FF;
+    width: 7rem;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+button.add {
+    width: 2rem;
+    background-color: #E09FFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    color: white;
+}
+
+.btnLista {
+    margin-top: 2rem;
+    width: 11rem;
+    font-size: 0.6rem;
+}
+
+.input {
+    border-radius: 1rem;
+    border: 1px solid #c6c6c6;
+    height: 1.5rem;
+    padding: 0 1rem;
+}

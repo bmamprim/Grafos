@@ -4,12 +4,13 @@
     align-items: center;
     padding: 2rem 0;
     gap: 0.5rem;
+    color: #979797;
 
-    .row {
+    .row-home {
         display: flex;
         gap: 3rem;
 
-        button {
+        .switch {
             background-color: transparent;
             padding: 0.7rem 2rem;
             border-radius: 20px;

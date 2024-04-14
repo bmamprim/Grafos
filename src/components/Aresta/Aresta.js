@@ -1,19 +1,18 @@
 import './Aresta.css';
 
-export function Aresta({ vertices }) {
+export function Aresta({ v1, v2 }) {
     return <>
-    { 
-        vertices.map((v, index) => (
+        <div className="circle1">
+            <p>{ v1 }</p>
+        </div>
+        {
+            !(v2 === undefined || v2 === '') &&
             <>
-            {
-                index === 1 &&
-                <hr />
-            }
-            <div className="circle">
-                <p>{ v }</p>
+            <hr />
+            <div className="circle2">
+                <p>{ v2 }</p>
             </div>
             </>
-        ))
-    }
+        }
     </>
 }

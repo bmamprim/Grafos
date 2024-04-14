@@ -1,3 +1,5 @@
+import './Laco.css';
+
 export function Laco({ vertice }) {
     return(
         <>

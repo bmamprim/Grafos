@@ -1,33 +1,81 @@
 import './InputGrafo.css';
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import { Laco } from '../Laço/Laco';
 import { Aresta } from '../Aresta/Aresta';
+import { criaListaAdjacencia, bfs, fluxo_dfs } from '../../lib/principal';
+import { ListaAdjacencia } from '../ListaAdjacencia/ListaAdjacencia';
+import { LayoutBfs } from '../BFS/bfs';
+import { LayoutDfs } from '../DFS/dfs';
 
-export function InputGrafo() {
+export function InputGrafo({direcionado}) {
     const [v1, setV1] = useState();
     const [v2, setV2] = useState();
     const [arestas, setArestas] = useState([])
-    const [aresta, setAresta] = useState([])
+    const [vertices, setVertices] = useState(new Set());
+    const [listaAdj, setListaAdj] = useState({});
+    const [inicio, setInicio] = useState('1');
+    const [resultadoBfs, setResultadoBfs] = useState([])
+    const [resultadoDfs, setResultadoDfs] = useState([])
 
-    useEffect(() => {
-        setAresta([v1, v2]);
-    }, [v1, v2])
-
-    function addAresta() {
-        setArestas([...arestas, [v1, v2]]);
+    function addArestas() {
+        if(!(v2 === undefined || v2 === '')) {
+            setArestas([...arestas, [v1, v2]]);
+            setVertices(new Set([...vertices, v1, v2]));
+        } else {
+            setVertices(new Set([...vertices, v1]));
+        }
+        setV1('');
+        setV2('');
     }
 
     return (
         <div style={{ display: 'flex', flexDirection:'column', marginTop: '2rem', alignItems: 'center'}}>
-            <div>
-                <input onChange={(e) => setV1(String(e.target.value))}/>
-                <input onChange={(e) => setV2(String(e.target.value))}/>
-                <button onClick={() => addAresta()}>Add Aresta</button>
+            <div className='row'>
+                <div className='col'>
+                    <div className='row-input'>
+                        <div className='col'>
+                            <input placeholder='V1' className='input' value={v1} onChange={(e) => setV1(String(e.target.value))}/>
+                            <input placeholder='V2' className='input' value={v2} onChange={(e) => setV2(String(e.target.value))}/>
+                        </div>
+                        <button className='add' onClick={() => {
+                            addArestas();
+                            setListaAdj(criaListaAdjacencia(false, [...vertices], arestas));
+                        }}>+</button>
+                    </div>
+                    <button className='btnLista' onClick={() => { setListaAdj(criaListaAdjacencia(false, [...vertices], arestas)) }}>LISTA ADJACENCIA</button>
+                    
+                </div>
+                <div className='col'>
+                {
+                    v1 === v2 && !(v2 === '' || v2 === undefined) ? 
+                    <Laco vertice={v1} /> : 
+                    <div style={{ display: 'flex', flexDirection:'row', marginTop: '2rem'}}>
+                        <Aresta v1={v1} v2={v2}/>
+                    </div>
+                }
+                </div>
             </div>
-            <div style={{ display: 'flex', flexDirection:'row', marginTop: '2rem'}}>
-                <Aresta vertices={aresta} />
+
+            <div className='row'>
+                <div className='col'>
+                    <ListaAdjacencia lista={listaAdj} />
+                </div>
+                <div className='col'>
+                    <p>A: [{ arestas.join('; ') }]</p>
+                    <p>N: [{[...vertices].join(', ')}]</p>
+                </div>
             </div>
-            <Laco vertice={aresta[0]} />
+        
+            <div className='row-bfs-dfs'>
+                <div className='col'>
+                    <button className='btnBfs' onClick={() => setResultadoBfs(bfs(listaAdj, inicio))}>BFS</button>
+                    <LayoutBfs bfs={resultadoBfs} />
+                </div>
+                <div className='col'>
+                    <button className='btnDfs' onClick={() => setResultadoDfs(fluxo_dfs(listaAdj, inicio))}>DFS</button>
+                    <LayoutDfs  dfs={resultadoDfs} />
+                </div>
+            </div>
         </div>
     )
 }
