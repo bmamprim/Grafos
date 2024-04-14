@@ -2,19 +2,21 @@ function criaListaAdjacencia(direcionado, listaVertices, listaArestas) {
     let grafo = {};
     
     for(let vertice in listaVertices) {
-        grafo[vertice] = {
+        grafo[listaVertices[vertice]] = {
             listaAdjacencia: [],
             preVisit: 0,
             posVisit: 0
         }
         // cria os vertices como keys do dicionario e cria as keys de cada vertice
     }
+
+    console.log(grafo)
     
     for(aresta in listaArestas){
-        grafo[aresta[0]]['listaAdjacencia'].push(aresta[1]);
+        grafo[listaArestas[aresta][0]]['listaAdjacencia'].push(listaArestas[aresta][1]);
         // se a flag de grafo direcionado for verdadeira, só insere a aresta no vertice "inicial"
         if (!direcionado) {
-            grafo[aresta[1]]['listaAdjacencia'].push(aresta[0]);
+            grafo[listaArestas[aresta][1]]['listaAdjacencia'].push(listaArestas[aresta][0]);
         }
     }
 
@@ -118,6 +120,3 @@ function fluxo_dfs(grafo, inicio) {
     return resultado;
 }
 
-grafo1 = criaListaAdjacencia(1, ['A', 'B', 'C'], [['A', 'B'], ['A', 'C'], ['B', 'C']])
-
-console.log(grafo1)
