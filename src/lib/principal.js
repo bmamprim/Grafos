@@ -55,43 +55,6 @@ function bfs(grafo, inicio) {
     return resultado;
 }
 
-function dfs(grafo, inicio) {
-    var pilha = [inicio];
-    const visitados = new Set();
-    const resultado = [];
-    var contador = 0;
-
-    while(Object.keys(grafo).length != visitados.size) {
-        const subgrafo = [];
-
-        if(!(pilha.length)) {
-            for(vertice in grafo) {
-                if(!visitados.has(vertice)) {
-                    pilha = [vertice];
-                    break;
-                }
-            }
-        }
-
-        while(pilha.length) {
-            const verticeAtual = pilha.pop()
-            contador++;
-            
-            if(!visitados.has(verticeAtual)) {
-                grafo[verticeAtual]['preVisit'] = contador;    
-                visitados.add(verticeAtual);
-                subgrafo.push(verticeAtual);
-
-                for(const vizinho of grafo[verticeAtual]) {
-                    pilha.push(vizinho);
-                }
-            }
-        }
-        resultado.push(subgrafo)
-    }
-    return resultado;
-}
-
 function aux_dfs(grafo, vertice, contador, pilha, visitados, subgrafo) {
     while(pilha.length) {
         vertice = pilha.pop();
@@ -104,7 +67,7 @@ function aux_dfs(grafo, vertice, contador, pilha, visitados, subgrafo) {
 
             for(const vizinho of grafo[vertice]['listaAdjacencia']) {
                 pilha.push(vizinho);
-                aux_dfs(grafo, vizinho, contador, pilha, visitados, subgrafo);
+                contador = aux_dfs(grafo, vizinho, contador, pilha, visitados, subgrafo);
             }
 
             contador += 1;
@@ -113,6 +76,7 @@ function aux_dfs(grafo, vertice, contador, pilha, visitados, subgrafo) {
         }
     }
     
+    return contador
 }
 
 function fluxo_dfs(grafo, inicio) {
@@ -134,7 +98,7 @@ function fluxo_dfs(grafo, inicio) {
             }
         }
 
-        aux_dfs(grafo, inicio, contador, pilha, visitados, subgrafo);
+        contador = aux_dfs(grafo, inicio, contador, pilha, visitados, subgrafo);
 
         resultado.push(subgrafo);
     }
