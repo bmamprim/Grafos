@@ -1,4 +1,4 @@
-function criaListaAdjacencia(direcionado, listaVertices, listaArestas) {
+export function criaListaAdjacencia(direcionado, listaVertices, listaArestas) {
     let grafo = {};
     
     for(let vertice in listaVertices) {
@@ -9,10 +9,8 @@ function criaListaAdjacencia(direcionado, listaVertices, listaArestas) {
         }
         // cria os vertices como keys do dicionario e cria as keys de cada vertice
     }
-
-    console.log(grafo)
     
-    for(aresta in listaArestas){
+    for(const aresta in listaArestas){
         grafo[listaArestas[aresta][0]]['listaAdjacencia'].push(listaArestas[aresta][1]);
         // se a flag de grafo direcionado for verdadeira, só insere a aresta no vertice "inicial"
         if (!direcionado) {
@@ -23,7 +21,7 @@ function criaListaAdjacencia(direcionado, listaVertices, listaArestas) {
     return grafo;
 }
 
-function bfs(grafo, inicio) {
+export function bfs(grafo, inicio) {
     var fila = [inicio];
     const visitados = new Set();
     const resultado = [];
@@ -55,7 +53,7 @@ function bfs(grafo, inicio) {
                 visitados.add(verticeAtual);
                 subgrafo.push(verticeAtual);
 
-                for(const vizinho of grafo[verticeAtual]) {
+                for(const vizinho of grafo[verticeAtual]['listaAdjacencia']) {
                     fila.push(vizinho);
                     // adiciona na fila os vertices vizinhos ao vertice atual da fila
                 }
@@ -93,7 +91,7 @@ function aux_dfs(grafo, vertice, contador, pilha, visitados, subgrafo) {
     return contador
 }
 
-function fluxo_dfs(grafo, inicio) {
+export function fluxo_dfs(grafo, inicio) {
     var contador = 0;
     var pilha = [inicio];
     const visitados = new Set();
@@ -103,7 +101,7 @@ function fluxo_dfs(grafo, inicio) {
         const subgrafo = [];
 
         if(!(pilha.length)) {
-            for(vertice in grafo) {
+            for(const vertice in grafo) {
                 if(!visitados.has(vertice)) {
                     pilha = [vertice];
                     inicio = vertice;
