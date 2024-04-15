@@ -1,20 +1,34 @@
 export function criaListaAdjacencia(direcionado, listaVertices, listaArestas) {
     let grafo = {};
     
-    for(let vertice in listaVertices) {
-        grafo[listaVertices[vertice]] = {
+    for(let vertice of listaVertices) {
+        grafo[vertice] = {
             listaAdjacencia: [],
             preVisit: 0,
             posVisit: 0
-        }
-        // cria os vertices como keys do dicionario e cria as keys de cada vertice
+        };
     }
     
-    for(const aresta in listaArestas){
-        grafo[listaArestas[aresta][0]]['listaAdjacencia'].push(listaArestas[aresta][1]);
-        // se a flag de grafo direcionado for verdadeira, só insere a aresta no vertice "inicial"
-        if (!direcionado) {
-            grafo[listaArestas[aresta][1]]['listaAdjacencia'].push(listaArestas[aresta][0]);
+    for(const aresta of listaArestas) {
+        const vertice1 = aresta[0];
+        const vertice2 = aresta[1];
+
+        // Handle self-loops
+        if (vertice1 === vertice2) {
+            if (!(vertice2 in grafo[vertice1]['listaAdjacencia'])) {
+                grafo[vertice1]['listaAdjacencia'].push(vertice2);
+            }
+        } else {
+            // Handle regular edges
+            const listaAdjacencia_vertice1 = grafo[vertice1]['listaAdjacencia'];
+            const listaAdjacencia_vertice2 = grafo[vertice2]['listaAdjacencia'];
+
+            if (!(vertice2 in listaAdjacencia_vertice1)) {
+                listaAdjacencia_vertice1.push(vertice2);
+                if (!direcionado) {
+                    listaAdjacencia_vertice2.push(vertice1);
+                }
+            }
         }
     }
 
@@ -28,7 +42,7 @@ export function bfs(grafo, inicio) {
 
     // inicializa nossas variaveis importantes para o funcionamento; visitados é criado como set pois é impossível um vertice visitado perder essa caracteristica
 
-    while(Object.keys(grafo).length != visitados.size) {
+    while(Object.keys(grafo).length !== visitados.size) {
         // loop criado para resolver o problema dos sub grafos desconexos; verifica se visitados tem o mesmo tamanho do dicionario, ou seja, uma verificação se todos os vertices foram contemplados
         const subgrafo = [];
 
@@ -97,7 +111,7 @@ export function fluxo_dfs(grafo, inicio) {
     const visitados = new Set();
     const resultado = [];
 
-    while(Object.keys(grafo).length != visitados.size) {
+    while(Object.keys(grafo).length !== visitados.size) {
         const subgrafo = [];
 
         if(!(pilha.length)) {
@@ -117,4 +131,7 @@ export function fluxo_dfs(grafo, inicio) {
 
     return resultado;
 }
+
+console.log(criaListaAdjacencia(0, ['A', 'B', 'C'], ([['A', 'A'], ['B', 'C'], ['A', 'B']])));
+
 
