@@ -17,9 +17,11 @@ Primeiro, clone o repositorio:
 
 Agora, vá ate o local do seu repositorio utilizando o comando 
 
-### `cd`
+### `cd <caminho do repositorio na sua maquina>`
 
 ou similar do seu SO.
+
+entre em `https://nodejs.org/en/download/` e baixe a versao do node.js para seu SO.
 
 Depois instale os modulos com o seguinte comando:
 
