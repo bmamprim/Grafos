@@ -42,7 +42,7 @@ background-color: #E09FFF;
 .col {
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
 }
 
 button.add {

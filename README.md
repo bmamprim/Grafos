@@ -5,7 +5,7 @@ Este é um projeto Reactjs e Nodejs, criado para calcular Busca em Profundidade 
 ## Alunos:
 Isabelle Mamprim | 202109123289
 Gustavo Valentim | 202201037709
-Lucas Liduíno | 
+Lucas Liduino de Oliveira e Cunha | 202202355471
 
 ## Como rodar:
 

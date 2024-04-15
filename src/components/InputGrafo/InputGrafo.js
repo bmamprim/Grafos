@@ -78,7 +78,7 @@ export function InputGrafo({direcionado}) {
                 </div>
                 <div className='col'>
                     <button className='btnDfs' onClick={() => setResultadoDfs(fluxo_dfs(listaAdj, inicio))}>DFS</button>
-                    <LayoutDfs  dfs={resultadoDfs} />
+                    <LayoutDfs lista={listaAdj}  dfs={resultadoDfs} />
                 </div>
             </div>
         </div>

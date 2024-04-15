@@ -1,7 +1,15 @@
-export function LayoutDfs({ dfs }) {
+export function LayoutDfs({ dfs, lista }) {
     return (
-       dfs.map((resultado) => (
-        <p>{resultado.join('   -   ')}</p>
-       ))
+        <div>
+        {
+        dfs.map((resultado) => (
+            <p>{resultado.join('   -   ')}</p>
+        ))
+        }
+        {
+            Object.keys(lista).map(chave => (
+                <p>previsit: { lista[chave]['preVisit'] } | posvisit: { lista[chave]['posVisit'] } </p>
+            ))}
+        </div>
     )
 }
