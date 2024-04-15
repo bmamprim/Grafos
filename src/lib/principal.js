@@ -7,24 +7,25 @@ export function criaListaAdjacencia(direcionado, listaVertices, listaArestas) {
             preVisit: 0,
             posVisit: 0
         };
+        // cria os vertices como keys do dicionario e cria as keys de cada vertice
     }
     
     for(const aresta of listaArestas) {
         const vertice1 = aresta[0];
         const vertice2 = aresta[1];
 
-        // Handle self-loops
+        // tratamento de laços
         if (vertice1 === vertice2) {
             if (!(vertice2 in grafo[vertice1]['listaAdjacencia'])) {
                 grafo[vertice1]['listaAdjacencia'].push(vertice2);
             }
         } else {
-            // Handle regular edges
             const listaAdjacencia_vertice1 = grafo[vertice1]['listaAdjacencia'];
             const listaAdjacencia_vertice2 = grafo[vertice2]['listaAdjacencia'];
 
             if (!(vertice2 in listaAdjacencia_vertice1)) {
                 listaAdjacencia_vertice1.push(vertice2);
+                // se a flag de grafo direcionado for verdadeira, só insere a aresta no vertice "inicial"
                 if (!direcionado) {
                     listaAdjacencia_vertice2.push(vertice1);
                 }
@@ -78,7 +79,7 @@ export function bfs(grafo, inicio) {
     return resultado;
 }
 
-function aux_dfs(grafo, vertice, contador, pilha, visitados, subgrafo) {
+export function aux_dfs(grafo, vertice, contador, pilha, visitados, subgrafo) {
     while(pilha.length) {
         vertice = pilha.pop();
         // retira o ultimo elemento da lista; comportamento de pilha
@@ -128,10 +129,5 @@ export function fluxo_dfs(grafo, inicio) {
 
         resultado.push(subgrafo);
     }
-
     return resultado;
 }
-
-console.log(criaListaAdjacencia(0, ['A', 'B', 'C'], ([['A', 'A'], ['B', 'C'], ['A', 'B']])));
-
-
