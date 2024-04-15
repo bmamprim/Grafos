@@ -3,7 +3,7 @@ import { InputGrafo } from '../InputGrafo/InputGrafo';
 import { React, useState } from 'react';
 
 export function Home() {
-    const [tipo, setTipo] = useState(0);
+    const [tipo, setTipo] = useState(1);
 
     return (
        <div className='div-home'>

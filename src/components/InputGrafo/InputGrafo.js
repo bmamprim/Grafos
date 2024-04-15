@@ -49,7 +49,7 @@ export function InputGrafo({direcionado}) {
                         </div>
                         <button className='add' onClick={() => {
                             addArestas();
-                            setListaAdj(criaListaAdjacencia(false, [...vertices], arestas));
+                            setListaAdj(criaListaAdjacencia(direcionado, [...vertices], arestas));
                         }}>+</button>
                     </div>
                     <button className='btnLista' onClick={() => { setListaAdj(criaListaAdjacencia(false, [...vertices], arestas)) }}>LISTA ADJACENCIA</button>
