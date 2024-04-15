@@ -7,7 +7,7 @@ export function ListaAdjacencia({ lista }) {
                     <div className="circleLista">
                         <p>{chave}</p>
                     </div>
-                    <p>- { lista[chave]['listaAdjacencia'].join(' - ') }</p>
+                    <p>- { lista[chave]['listaAdjacencia'].join(' - ') } | previsit: { lista[chave]['preVisit'] } | posvisit: { lista[chave]['posVisit'] } </p>
                 </div>
             ))}
         </div>

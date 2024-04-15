@@ -1,6 +1,11 @@
-# AP1 - Grafos
+# AP1 - Engenharia da Computação | Análise e Complexidade de Algoritmos
 
 Este é um projeto Reactjs e Nodejs, criado para calcular Busca em Profundidade e Busca em Largura dos Grafos inseridos pelos usuários.
+
+## Alunos:
+Isabelle Mamprim | 202109123289
+Gustavo Valentim | 202201037709
+Lucas Liduíno | 
 
 ## Como rodar:
 
