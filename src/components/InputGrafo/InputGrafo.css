@@ -30,6 +30,20 @@
     cursor: pointer;
 }
 
+.btnClear {
+    padding: 0.7rem 2rem;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    width: 10rem;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    background-color: #FF0000;
+    margin-top: 0.5rem;
+    font-size: 0.6rem;
+}
+
 .btnLista {
 background-color: #E09FFF;
 }

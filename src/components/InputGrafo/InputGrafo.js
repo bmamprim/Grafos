@@ -28,6 +28,16 @@ export function InputGrafo({direcionado}) {
         setV2('');
     }
 
+    function clear() {
+        setV1('');
+        setV2('');
+        setArestas([]);
+        setVertices(new Set());
+        setListaAdj({});
+        setResultadoBfs([]);
+        setResultadoDfs([]);
+    }
+
     return (
         <div style={{ display: 'flex', flexDirection:'column', marginTop: '2rem', alignItems: 'center'}}>
             <div className='row'>
@@ -43,6 +53,7 @@ export function InputGrafo({direcionado}) {
                         }}>+</button>
                     </div>
                     <button className='btnLista' onClick={() => { setListaAdj(criaListaAdjacencia(false, [...vertices], arestas)) }}>LISTA ADJACENCIA</button>
+                    <button className='btnClear' onClick={() => clear()}>LIMPAR GRAFO</button>
                     
                 </div>
                 <div className='col'>
@@ -58,6 +69,7 @@ export function InputGrafo({direcionado}) {
 
             <div className='row'>
                 <div className='col'>
+                    <p style={{ fontWeight: 'bold' }}>LISTA ADJACENCIA:</p>
                     <ListaAdjacencia lista={listaAdj} />
                 </div>
                 <div className='col'>
